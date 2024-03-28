@@ -30,9 +30,12 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="main.js"></script>
 </head>
 
-<body>
+<body ng-app="contactApp">
 
     <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
@@ -184,19 +187,39 @@
                                 <img class="position-absolute w-100 h-100 rounded" src="classroom.jpeg" style="object-fit: cover;">
                             </div>
                         </div>
-                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" ng-controller="contactController">
                             <div class="h-100 d-flex flex-column justify-content-center p-5">
                                 <h1 class="mb-4">Become A Teacher</h1>
                                 <p class="mb-4">
-                                    Becoming a teacher is a multifaceted journey that involves acquiring the necessary education, honing essential skills, and embodying a commitment to fostering learning and development in students. 
+                                    Becoming a teacher is a multifaceted journey that involves acquiring the necessary education, honing essential skills, and embodying a commitment to fostering learning and development in students.
                                 </p>
-                                <a class="btn btn-primary py-3 px-5" href="">Get Started Now<i class="fa fa-arrow-right ms-2"></i></a>
+                                <h6>PLEASE FILL OUT THE INFORMATION BELOW TO MOVE FORWARD:</h6>
+                                <label for="name">Name:</label>
+                                <input type="text" id="name" ng-model="contact.name" placeholder="Enter your name">
+                                <br>
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" ng-model="contact.email" placeholder="Enter your email">
+                                <br>
+                                <label for="message">Message:</label>
+                                <textarea id="message" ng-model="contact.message" placeholder="Enter your message"></textarea>
+                                <br>
+                                <button ng-click="submitForm()">Submit</button>
+                                <hr>
+                                <div ng-if="submitted">
+                                    <h2>Verfied Submission:</h2>
+                                    <p>Name: {{contact.name}}</p>
+                                    <p>Email: {{contact.email}}</p>
+                                    <p>Message: {{contact.message}}</p>
+                                </div>
+                                <br>
+                                <p>THANK YOU FOR YOUR SUBMISSION. YOU WILL RECEIVE AN EMAIL SHORTLY!</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
         <!-- Call To Action End -->
 
 
@@ -581,7 +604,6 @@
     <script src="lib/easing/easing.min.js"></script>
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="main.js"></script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
