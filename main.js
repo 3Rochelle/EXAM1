@@ -1,5 +1,17 @@
 (function ($) {
     "use strict";
+             
+    angular.module('contactApp', [])
+    .controller('contactController', function ($scope) {
+        $scope.contact = {};
+        $scope.submitted = false;
+
+        $scope.submitForm = function () {
+            console.log("Form submitted:", $scope.contact);
+            $scope.submitted = true;
+        };
+    });
+
 
     // AngularJS app initialization
     var app = angular.module('kidSignupApp', []);
